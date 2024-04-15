@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function Todoappinput({ handleonNewItem }) {
-  const [itemName, setitemName] = useState();
-  const [itemDuedate, setitemDuedate] = useState();
+  const [itemName, setitemName] = useState("");
+  const [itemDuedate, setitemDuedate] = useState("");
   const handleNameChange = (event) => {
     setitemName(event.target.value);
   };

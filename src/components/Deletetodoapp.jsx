@@ -6,6 +6,7 @@ function Deletetodoapp({ todoitems, onDeleteClick }) {
     <div className="itemcontainer">
       {todoitems.map((item) => (
         <Todoconatiner
+          key={item.name}
           todotitle={item.name}
           tododate={item.date}
           onDeleteClick={onDeleteClick}
