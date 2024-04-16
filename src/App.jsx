@@ -8,8 +8,10 @@ import Message from "./components/Message";
 function App() {
   const [todoitems, settodoitems] = useState([]);
   const onNewItem = (itemName, itemDuedate) => {
-    const newTodoItems = [...todoitems, { name: itemName, date: itemDuedate }];
-    settodoitems(newTodoItems);
+    settodoitems((currValue) => [
+      ...currValue,
+      { name: itemName, date: itemDuedate },
+    ]);
   };
   const handleDeleteItem = (todoItemsName) => {
     const newTodoItems = todoitems.filter(

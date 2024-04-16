@@ -1,44 +1,37 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 function Todoappinput({ handleonNewItem }) {
-  const [itemName, setitemName] = useState("");
-  const [itemDuedate, setitemDuedate] = useState("");
-  const handleNameChange = (event) => {
-    setitemName(event.target.value);
-  };
-  const handleDateChange = (event) => {
-    setitemDuedate(event.target.value);
-  };
-  const handleAddButtonClick = () => {
+  const itemNameelement = useRef();
+  const itemDueelement = useRef();
+
+  const handleAddButtonClick = (event) => {
+    event.preventDefault();
+    const itemName = itemNameelement.current.value;
+    console.log(itemNameelement);
+    const itemDuedate = itemDueelement.current.value;
+    console.log(itemDueelement);
     handleonNewItem(itemName, itemDuedate);
-    setitemDuedate("");
-    setitemName("");
   };
 
   return (
     <div className="container todoapp__container ">
-      <div className="row">
+      <form onSubmit={handleAddButtonClick} className="row">
         <div className="col-4">
           <input
             type="text"
             placeholder="Enter the list to be added"
-            onChange={handleNameChange}
-            value={itemName}
+            ref={itemNameelement}
           />
         </div>
         <div className="col-4">
-          <input type="date" value={itemDuedate} onChange={handleDateChange} />
+          <input type="date" ref={itemDueelement} />
         </div>
         <div className="col-2">
-          <button
-            type="button"
-            className="btn btn-success btns"
-            onClick={handleAddButtonClick}
-          >
+          <button type="submit" className="btn btn-success btns">
             Add
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
