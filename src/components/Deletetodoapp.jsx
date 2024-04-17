@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Todoconatiner from "./Todoconatiner";
+import { TodoitemsContext } from "../store/Itemtodolist";
 
-function Deletetodoapp({ todoitems, onDeleteClick }) {
+function Deletetodoapp({ onDeleteClick }) {
+  const todoitems = useContext(TodoitemsContext);
   return (
     <div className="itemcontainer">
       {todoitems.map((item) => (
